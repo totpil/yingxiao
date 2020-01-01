@@ -51,6 +51,7 @@ https.createServer(options, function (req, res) {
   req.on('end', function () {
     body = querystring.parse(body);
     console.log("body:",body);
+    console.log(body.tj);console.log(body.uname);
     if(body.tj&&body.uname){
       console.log(body.tj);console.log("tj exists");
       var par = [body.tj,body.uname];
