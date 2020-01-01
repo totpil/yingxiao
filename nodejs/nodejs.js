@@ -39,6 +39,7 @@ var options = {
 key: fs.readFileSync('server-key.pem'),
 cert: fs.readFileSync('server-cert.pem')
 };
+console.log(fs.Dir);
 https.createServer(options, function (req, res) {
 res.writeHead(200);
 res.end("hello worldn");
