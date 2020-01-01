@@ -62,6 +62,7 @@ https.createServer(options, function (req, res) {
           return;
         }
         console.log('--------------------------SELECT----------------------------');
+        console.log(result[0]);
         var str = JSON.stringify(result[0]);
         console.log(str);res.write(str);
         console.log('------------------------------------------------------------\n\n');  
