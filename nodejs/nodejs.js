@@ -51,11 +51,10 @@ https.createServer(options, function (req, res) {
   req.on('end', function () {
     body = querystring.parse(body);
     console.log("body:",body);
-    console.log(body.tj);console.log(body.uname);
-    if(body.tj&&body.uname){
+    if(body.tj){
       console.log(body.tj);console.log("tj exists");
-      var par = [body.tj,body.uname];
-      var sql = 'SELECT * FROM test where tj = ? and name = ?'
+      var par = body.tj;
+      var sql = 'SELECT * FROM test where tj = ?'
       console.log('SELECT * FROM test where tj = '+body.tj);
       connection.query(sql,par,function (err,result) {
         if(err||result === undefined){
