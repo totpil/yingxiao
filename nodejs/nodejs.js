@@ -42,6 +42,18 @@ var options = {
 
 https.createServer(options, function (req, res) {
 
+  var body = "";
+  req.on('data', function (chunk) {
+    body += chunk;  //一定要使用+=，如果body=chunk，因为请求favicon.ico，body会等于{}
+    console.log("chunk:",chunk);
+  });
+  req.on('end', function () {
+    body = querystring.parse(body);
+    console.log("body:",body);
+    res.end();
+  });
+
+
   var  sql = 'SELECT * FROM test';
   connection.query(sql,function (err, result) {
     if(err){
