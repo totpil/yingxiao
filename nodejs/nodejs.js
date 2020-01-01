@@ -72,7 +72,7 @@ https.createServer(options, function (req, res) {
         }
       });
     }else{
-      res.write("Nodata");
+      res.write("根据工号未查询到人员");
       res.end();
     }
   });
