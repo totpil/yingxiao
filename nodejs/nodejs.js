@@ -53,10 +53,9 @@ https.createServer(options, function (req, res) {
     console.log("body:",body);
     if(body.tj){
       console.log(body.tj);
-  
-
-      var  sql = 'SELECT * FROM test where tj ='+body.tj;
-      connection.query(sql,function (err, result) {
+      var par = body.tj;
+      var  sql = 'SELECT * FROM test where tj = ？';
+      connection.query(sql,function (err,par,result) {
         if(err){
           console.log('[SELECT ERROR] - ',err.message);
           return;
