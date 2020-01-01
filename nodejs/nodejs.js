@@ -51,22 +51,23 @@ https.createServer(options, function (req, res) {
   req.on('end', function () {
     body = querystring.parse(body);
     console.log("body:",body);
-  });
-  if(body.tj){
-    console.log(body.tj);
-  }
-
-  var  sql = 'SELECT * FROM test';
-  connection.query(sql,function (err, result) {
-    if(err){
-      console.log('[SELECT ERROR] - ',err.message);
-      return;
+    if(body.tj){
+      console.log(body.tj);
     }
-    console.log('--------------------------SELECT----------------------------');
-    var str = JSON.stringify(result[0]);
-    console.log(str);res.write(str);
-    console.log('------------------------------------------------------------\n\n');  
-    res.end()
+  
+
+    var  sql = 'SELECT * FROM test';
+    connection.query(sql,function (err, result) {
+      if(err){
+        console.log('[SELECT ERROR] - ',err.message);
+        return;
+      }
+      console.log('--------------------------SELECT----------------------------');
+      var str = JSON.stringify(result[0]);
+      console.log(str);res.write(str);
+      console.log('------------------------------------------------------------\n\n');  
+      res.end()
+    });
   });
 
     res.setHeader("Access-Control-Allow-Origin", "*"); 
