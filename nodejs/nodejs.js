@@ -52,7 +52,7 @@ https.createServer(options, function (req, res) {
     body = querystring.parse(body);
     console.log("body:",body);
     if(body.tj){
-      console.log(body.tj);
+      console.log(body.tj);console.log("tj exists");
       var par = body.tj;
       var sql = 'SELECT * FROM test where tj = ?'
       console.log('SELECT * FROM test where tj = '+body.tj);
@@ -72,6 +72,8 @@ https.createServer(options, function (req, res) {
         }
       });
     }
+    res.write("2222");
+    res.end();
   });
 
     res.setHeader("Access-Control-Allow-Origin", "*"); 
