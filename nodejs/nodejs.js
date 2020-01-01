@@ -42,7 +42,7 @@ var options = {
 };
 
 https.createServer(options, function (req, res) {
-
+  console.log("get a user");
   var body = "";
   req.on('data', function (chunk) {
     body += chunk;  //一定要使用+=，如果body=chunk，因为请求favicon.ico，body会等于{}
