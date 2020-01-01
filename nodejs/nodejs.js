@@ -57,16 +57,18 @@ https.createServer(options, function (req, res) {
       var sql = 'SELECT * FROM test where tj = ?'
       console.log('SELECT * FROM test where tj = '+body.tj);
       connection.query(sql,par,function (err,result) {
-        if(err||result == undefined){
+        if(err||result === undefined){
           console.log('[SELECT ERROR] - ',err.message);
+          res.end()
           return;
+        }else{
+          console.log('--------------------------SELECT----------------------------');
+          console.log(result[0]);
+          var str = JSON.stringify(result[0]);
+          console.log(str);res.write(str);
+          console.log('------------------------------------------------------------\n\n');  
+          res.end()
         }
-        console.log('--------------------------SELECT----------------------------');
-        console.log(result[0]);
-        var str = JSON.stringify(result[0]);
-        console.log(str);res.write(str);
-        console.log('------------------------------------------------------------\n\n');  
-        res.end()
       });
     }
   });
