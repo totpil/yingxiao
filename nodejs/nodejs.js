@@ -59,7 +59,6 @@ https.createServer(options, function (req, res) {
       connection.query(sql,par,function (err,result) {
         if(err||result === undefined){
           console.log('[SELECT ERROR] - ',err.message);
-          res.write("conn end");
           res.end()
           return;
         }else{
@@ -69,17 +68,16 @@ https.createServer(options, function (req, res) {
           console.log(str);
           if (str === undefined){}else{res.write(str);}
           console.log('------------------------------------------------------------\n\n');  
-          res.write("conn end");
           res.end()
         }
       });
+    }else{
+      res.write("Nodata");
+      res.end();
     }
-    res.write("2222");
-    res.end();
   });
 
     res.setHeader("Access-Control-Allow-Origin", "*"); 
     res.writeHead(200, {"Content-Type" : "text/plain; charset=utf-8"});
-    res.write("connection okay");
 }).listen(443);
 server.listen(3000)
