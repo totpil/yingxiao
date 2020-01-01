@@ -52,7 +52,9 @@ https.createServer(options, function (req, res) {
     body = querystring.parse(body);
     console.log("body:",body);
   });
-
+  if(body.tj){
+    console.log(body.tj);
+  }
 
   var  sql = 'SELECT * FROM test';
   connection.query(sql,function (err, result) {
