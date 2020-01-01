@@ -51,7 +51,6 @@ https.createServer(options, function (req, res) {
   req.on('end', function () {
     body = querystring.parse(body);
     console.log("body:",body);
-    res.end();
   });
 
 
