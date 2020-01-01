@@ -66,7 +66,7 @@ https.createServer(options, function (req, res) {
           console.log(result[0]);
           var str = JSON.stringify(result[0]);
           console.log(str);
-          if (str === undefined){res.write("{name:'根据工号未查询到人员'}");}else{res.write(str);}
+          if (str === undefined){res.write("{'name':'根据工号未查询到人员'}");}else{res.write(str);}
           console.log('------------------------------------------------------------\n\n');  
           res.end()
         }
