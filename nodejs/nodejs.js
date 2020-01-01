@@ -36,12 +36,27 @@ var server = http.createServer(function(req,res){
 
 
 var options = {
-key: fs.readFileSync('server-key.pem'),
-cert: fs.readFileSync('server-cert.pem')
+  key: fs.readFileSync('server-key.pem'),
+  cert: fs.readFileSync('server-cert.pem')
 };
-console.log(fs.Dir);
+
 https.createServer(options, function (req, res) {
-res.writeHead(200);
-res.end("hello worldn");
+
+  var  sql = 'SELECT * FROM test';
+  connection.query(sql,function (err, result) {
+    if(err){
+      console.log('[SELECT ERROR] - ',err.message);
+      return;
+    }
+    console.log('--------------------------SELECT----------------------------');
+    var str = JSON.stringify(result[0]);
+    console.log(str);res.write(str);
+    console.log('------------------------------------------------------------\n\n');  
+    res.end()
+  });
+
+    res.setHeader("Access-Control-Allow-Origin", "*"); 
+    res.writeHead(200, {"Content-Type" : "text/plain; charset=utf-8"});
+    res.end("hello worldn");
 }).listen(443);
 server.listen(3000)
