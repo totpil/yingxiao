@@ -10,6 +10,9 @@ var connection = mysql.createConnection({
   connection.connect();
 
 var server = http.createServer(function(req,res){
+
+
+  
   var  sql = 'SELECT * FROM test';
   connection.query(sql,function (err, result) {
     if(err){

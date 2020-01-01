@@ -8,6 +8,8 @@
 	alert(json);
 	var obj=JSON.parse(json)
 	alert(obj.test1);alert(obj.test2);
+	var a3 = JSON.stringify(obj.test2).replace("\"","").replace("\"","");
+	alert(a3);
             }
      };
 </script>
