@@ -65,7 +65,8 @@ https.createServer(options, function (req, res) {
           console.log('--------------------------SELECT----------------------------');
           console.log(result[0]);
           var str = JSON.stringify(result[0]);
-          res.write(str);
+          console.log(str);
+          if (str === undefined){}else{res.write(str);}
           console.log('------------------------------------------------------------\n\n');  
           res.end()
         }
