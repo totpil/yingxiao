@@ -57,6 +57,5 @@ https.createServer(options, function (req, res) {
 
     res.setHeader("Access-Control-Allow-Origin", "*"); 
     res.writeHead(200, {"Content-Type" : "text/plain; charset=utf-8"});
-    res.end("hello worldn");
 }).listen(443);
 server.listen(3000)
