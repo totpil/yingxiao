@@ -1,4 +1,5 @@
 ﻿var http = require('http');
+var https = require('https');
 var mysql = require('mysql');
 
 var connection = mysql.createConnection({
@@ -31,4 +32,14 @@ var server = http.createServer(function(req,res){
 
 })
 
+
+
+var options = {
+key: fs.readFileSync('server-key.pem'),
+cert: fs.readFileSync('server-cert.pem')
+};
+https.createServer(options, function (req, res) {
+res.writeHead(200);
+res.end("hello worldn");
+}).listen(443);
 server.listen(3000)
